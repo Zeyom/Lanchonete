@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Anotar Pedidos - Garçom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #cbcbcb;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #2e86de;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .active {
+      background-color: #1e5fad;
+    }
+
+    #pedidoForm, #pedidosView {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .item input[type="number"] {
+      margin-left: 10px;
+      width: 60px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .finalizar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    #pedidos-lista {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+
+    .pedido-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .pedido-item button {
+      background-color: #e74c3c;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lanchonete Papo Bom</h1>
+
+  <div class="buttons">
+    <button id="btnAnotar" onclick="mostrar('anotar')">Anotar Pedido</button>
+    <button id="btnPedidos" onclick="mostrar('ver')">Ver Pedidos</button>
+  </div>
+
+  <div id="pedidoForm">
+    <div class="section">
+      <h3>Espetos</h3>
+      <div class="item"><input type="checkbox" data-nome="Carne"> Carne <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Frango"> Frango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Kafta"> Kafta <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Pernil"> Pernil <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Queijo"> Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Medalhão Frango"> Medalhão Frango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Medalhão de Queijo"> Medalhão de Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Medalhão de Carne"> Medalhão de Carne <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Lanches</h3>
+      <div class="item"><input type="checkbox" data-nome="Cachorro Simples"> Cachorro Simples <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Cachorro Duplo"> Cachorro Duplo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Cachorro Queijo"> Cachorro Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Cachorro Duplo Queijo"> Cachorro Duplo Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Pitbull"> Pitbull <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="X-Burguer"> X-Burguer <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Porções Fritas</h3>
+      <div class="item"><input type="checkbox" data-nome="Batata Simples"> Batata Simples <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batata Calabresa"> Batata Calabresa <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batata Bacon"> Batata Bacon <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Tilápia"> Tilápia <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batata Tudo"> Batata Tudo <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Porções Cozidas</h3>
+      <div class="item"><input type="checkbox" data-nome="Bife Acebolado"> Bife Acebolado <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Porções Frias</h3>
+      <div class="item"><input type="checkbox" data-nome="Azeitona Verde"> Azeitona Verde <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Tábua de frios"> Tábua de frios <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Refrigerantes</h3>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola 2L"> Coca-Cola 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola Zero 2L"> Coca-Cola Zero 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Fanta Laranja 2L"> Fanta Laranja 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Guaraná Antarctica 2L"> Guaraná Antarctica 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Sprite 2L"> Sprite 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Funada 2L"> Funada 2L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca Cola Vidro 1L"> Coca Cola Vidro 1L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Guaraná Antarctica 1L"> Guaraná Antarctica 1L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca Cola Pet 1L"> Coca Cola Pet 1L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Guaraná Pet 1L"> Guaraná Pet 1L <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca Cola 600ml"> Coca Cola 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Fanta Laranja 600ml"> Fanta Laranja 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="H2OH 500ml"> H2OH 500ml <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Refrigerantes Lata</h3>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola Lata"> Coca-Cola <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola Zero Lata"> Coca-Cola Zero <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Fanta Laranja Lata"> Fanta Laranja <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Fanta Uva Lata"> Fanta Uva <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Guaraná Antarctica Lata"> Guaraná Antarctica <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Schweppes Citrus Lata"> Schweppes Citrus <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Sprite Lata"> Sprite <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Latas sem Álcool</h3>
+      <div class="item"><input type="checkbox" data-nome="Brahma 0%"> Brahma 0 <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Heineken 0%"> Heineken 0 <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Del Valle Uva"> Lata Del Valle Uva <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Del Valle Pêssego"> Lata Del Valle Pêssego <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Cervejas</h3>
+      <div class="item"><input type="checkbox" data-nome="Amstel 600ml"> Amstel 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Antarctica Boa 600ml"> Antarctica Boa 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Brahma 600ml"> Brahma 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Budweiser 600ml"> Budweiser 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Heineken 600ml"> Heineken 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Skol 600ml"> Skol 600ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Brahma Lata 350ml"> Brahma Lata 350ml <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Skol Lata 350ml"> Skol Lata 350ml <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Drinks</h3>
+      <div class="item"><input type="checkbox" data-nome="Caipirinha de Limão Vodka"> Caipirinha de Limão Vodka <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Caipirinha de Limão Pinga"> Caipirinha de Limão Pinga <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Batidas</h3>
+      <div class="item"><input type="checkbox" data-nome="Batida de Morango"> Morango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batida de Maracujá"> Maracujá <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Doses</h3>
+      <div class="item"><input type="checkbox" data-nome="Dose de Whisky"> Whisky <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Dose de Sagatiba"> Sagatiba <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Vinho Tinto Suave</h3>
+      <div class="item"><input type="checkbox" data-nome="Taça Vinho Tinto Suave"> Taça <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Chopps</h3>
+      <div class="item"><input type="checkbox" data-nome="Chopp Stempel"> Stempel <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Águas</h3>
+      <div class="item"><input type="checkbox" data-nome="Água Mineral"> Água Mineral <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Água com Gás"> Água Mineral c/ Gás <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Água Tônica"> Água Tônica <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Pedido Especial</h3>
+      <div class="item">
+        <input type="text" id="especialItem" placeholder="Digite o nome do item especial">
+        <input type="number" id="especialQtd" min="1" value="1" style="margin-left:10px; width:60px;">
+        <button onclick="adicionarPedidoEspecial()" style="margin-left:10px;">Adicionar</button>
+      </div>
+      <div id="lista-especiais"></div>
+    </div>
+
+    <div class="section">
+      <h3>Observações</h3>
+      <textarea id="observacoes" placeholder="Ex: sem cebola, mais ketchup..."></textarea>
+    </div>
+
+    <div class="section">
+      <h3>Número da Mesa</h3>
+      <input type="text" id="mesa" placeholder="Ex: 01" required>
+    </div>
+
+    <button onclick="enviarPedido()" class="finalizar">Finalizar Pedido</button>
+  </div>
+
+  <div id="pedidosView">
+    <h3>Pedidos Realizados</h3>
+    <div id="pedidos-lista"></div>
+  </div>
+
+  <script>
+    function mostrar(selecao) {
+      const btnAnotar = document.getElementById("btnAnotar");
+      const btnPedidos = document.getElementById("btnPedidos");
+
+      document.getElementById("pedidoForm").style.display = selecao === "anotar" ? "block" : "none";
+      document.getElementById("pedidosView").style.display = selecao === "ver" ? "block" : "none";
+
+      btnAnotar.classList.toggle("active", selecao === "anotar");
+      btnPedidos.classList.toggle("active", selecao === "ver");
+
+      if (selecao === "ver") carregarPedidos();
+    }
+
+    let pedidosEspeciais = [];
+
+    function adicionarPedidoEspecial() {
+      const nome = document.getElementById("especialItem").value.trim();
+      const quantidade = parseInt(document.getElementById("especialQtd").value);
+
+      if (!nome) {
+        alert("Digite o nome do item especial.");
+        return;
+      }
+
+      pedidosEspeciais.push({ item: nome, quantidade });
+      document.getElementById("especialItem").value = "";
+      document.getElementById("especialQtd").value = 1;
+      atualizarListaEspeciais();
+    }
+
+    function removerPedidoEspecial(index) {
+      pedidosEspeciais.splice(index, 1);
+      atualizarListaEspeciais();
+    }
+
+    function atualizarListaEspeciais() {
+      const lista = document.getElementById("lista-especiais");
+      lista.innerHTML = "";
+
+      pedidosEspeciais.forEach((p, i) => {
+        const div = document.createElement("div");
+        div.className = "pedido-item";
+        div.innerHTML = `
+          <span>${p.quantidade}x ${p.item}</span>
+          <button onclick="removerPedidoEspecial(${i})">Remover</button>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    async function enviarPedido() {
+      const checkboxes = document.querySelectorAll("#pedidoForm .item input[type='checkbox']");
+      const pedidos = [...pedidosEspeciais];
+
+      checkboxes.forEach((cb) => {
+        if (cb.checked) {
+          const nome = cb.dataset.nome;
+          const quantidade = parseInt(cb.nextElementSibling.value) || 1;
+          pedidos.push({ item: nome, quantidade });
+        }
+      });
+
+      checkboxes.forEach((cb) => {
+        if (cb.checked) {
+          const nome = cb.dataset.nome;
+          const quantidade = parseInt(cb.nextElementSibling.value) || 1;
+          pedidos.push({ item: nome, quantidade });
+        }
+      });
+
+      const observacoes = document.getElementById("observacoes").value;
+      const mesa = document.getElementById("mesa").value.trim();
+
+      if (!mesa) return alert("Informe o número da mesa!");
+      if (pedidos.length === 0) return alert("Selecione ao menos 1 item.");
+
+      await fetch("http://localhost:3000/pedido", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pedidos, observacoes, mesa })
+      });
+
+      alert("Pedido enviado!");
+      document.querySelectorAll("input[type='checkbox']").forEach(i => i.checked = false);
+      document.getElementById("observacoes").value = "";
+      document.getElementById("mesa").value = "";
+      pedidosEspeciais = [];
+      atualizarListaEspeciais();
+      mostrar('ver');
+    }
+
+    async function carregarPedidos() {
+      const res = await fetch("http://localhost:3000/pedidos");
+      const dados = await res.json();
+      const lista = document.getElementById("pedidos-lista");
+      lista.innerHTML = "";
+
+      const mesas = {};
+      dados.forEach(p => {
+        if (!mesas[p.mesa]) mesas[p.mesa] = [];
+        mesas[p.mesa].push(p);
+      });
+
+      Object.keys(mesas).forEach(mesa => {
+        const grupo = document.createElement("div");
+        grupo.innerHTML = `<h4>Mesa ${mesa}</h4>`;
+        
+        mesas[mesa].forEach(p => {
+          const div = document.createElement("div");
+          div.className = "pedido-item";
+          div.innerHTML = `
+            <span>${p.quantidade}x ${p.item} - ${p.observacoes || ""}</span>
+            <button onclick="removerPedido(${p.id})">Remover</button>
+          `;
+          grupo.appendChild(div);
+        });
+
+        lista.appendChild(grupo);
+      });
+    }
+
+    async function removerPedido(id) {
+      await fetch(`http://localhost:3000/pedido/${id}`, { method: "DELETE" });
+      carregarPedidos();
+    }
+
+    window.onload = () => mostrar('anotar');
+  </script>
+
+</body>
+</html>
