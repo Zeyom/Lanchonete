@@ -352,14 +352,6 @@
         }
       });
 
-      checkboxes.forEach((cb) => {
-        if (cb.checked) {
-          const nome = cb.dataset.nome;
-          const quantidade = parseInt(cb.nextElementSibling.value) || 1;
-          pedidos.push({ item: nome, quantidade });
-        }
-      });
-
       const observacoes = document.getElementById("observacoes").value;
       const mesa = document.getElementById("mesa").value.trim();
 
@@ -373,11 +365,14 @@
       });
 
       alert("Pedido enviado!");
+
       document.querySelectorAll("input[type='checkbox']").forEach(i => i.checked = false);
+      document.querySelectorAll("input[type='number']").forEach(i => i.value = 1);
       document.getElementById("observacoes").value = "";
       document.getElementById("mesa").value = "";
       pedidosEspeciais = [];
       atualizarListaEspeciais();
+
       mostrar('ver');
     }
 
