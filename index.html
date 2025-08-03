@@ -377,7 +377,7 @@
     }
 
     async function carregarPedidos() {
-      const res = await fetch("https://lanchonete-o8lx.onrender.com/pedidos");
+      const res = await fetch("https://lanchonete-o8lx.onrender.com/pedidos")
       const dados = await res.json();
       const lista = document.getElementById("pedidos-lista");
       lista.innerHTML = "";
