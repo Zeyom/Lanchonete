@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Anotar Pedidos - Garçom</title>
+  <title>Anotar Pedidos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -121,14 +121,17 @@
   <div id="pedidoForm">
     <div class="section">
       <h3>Espetos</h3>
-      <div class="item"><input type="checkbox" data-nome="Carne"> Carne <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Frango"> Frango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Carne"> Carne <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Kafta"> Kafta <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Pernil"> Pernil <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Queijo"> Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Frango"> Frango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Linguiça Toscana"> Linguiça Toscana <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Linguiça Calabresa"> Linguiça Calabresa <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Medalhão Frango"> Medalhão Frango <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Medalhão de Queijo"> Medalhão de Queijo <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Medalhão de Carne"> Medalhão de Carne <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Queijo"> Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Pão de Alho"> Pão de Alho <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Espeto Pernil"> Pernil <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Jantinha"> Jantinha <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
@@ -143,22 +146,36 @@
 
     <div class="section">
       <h3>Porções Fritas</h3>
-      <div class="item"><input type="checkbox" data-nome="Batata Simples"> Batata Simples <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Batata Calabresa"> Batata Calabresa <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batata Frita"> Batata Frita <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Batata Bacon"> Batata Bacon <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Tilápia"> Tilápia <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batata Calabresa"> Batata Calabresa <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Batata Tudo"> Batata Tudo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Isca de Tilápia"> Isca de Tilápia <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Mandioca"> Mandioca <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Quibe"> Quibe <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
-      <h3>Porções Cozidas</h3>
-      <div class="item"><input type="checkbox" data-nome="Bife Acebolado"> Bife Acebolado <input type="number" min="1" value="1"></div>
+      <h3>Porções na Chapa</h3>
+      <div class="item"><input type="checkbox" data-nome="Alcatra Acebolada"> Alcatra Acebolada <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Calabresa Acebolada"> Calabresa Acebolada <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Filé de Frango"> Filé de Frango <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
       <h3>Porções Frias</h3>
-      <div class="item"><input type="checkbox" data-nome="Azeitona Verde"> Azeitona Verde <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Tábua de frios"> Tábua de frios <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Azeitona Verde"> Azeitona verde <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Presunto e Queijo"> Presunto e Queijo <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Conservas"> Conservas <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Tábua de Frios"> Tábua de Frios <input type="number" min="1" value="1"></div>
+    </div>
+
+    <div class="section">
+      <h3>Crepe Suiço</h3>
+      <div class="item"><input type="checkbox" data-nome="Crepe de Chocolate"> Crepe de Chocolate <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Crepe de Chocolate branco"> Crepe de Chocolate branco <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Crepe de Frango desfiado"> Crepe de Frango desfiado <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Crepe de Presunto e Queijo"> Crepe de Presunto e Queijo <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
@@ -180,21 +197,21 @@
 
     <div class="section">
       <h3>Refrigerantes Lata</h3>
-      <div class="item"><input type="checkbox" data-nome="Coca-Cola Lata"> Coca-Cola <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Coca-Cola Zero Lata"> Coca-Cola Zero <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Fanta Laranja Lata"> Fanta Laranja <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola Lata"> Coca-Cola Lata <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Coca-Cola Zero Lata"> Coca-Cola Zero Lata <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Fanta Laranja Lata"> Fanta Laranja Lata <input type="number" min="1" value="1"></div>
       <div class="item"><input type="checkbox" data-nome="Fanta Uva Lata"> Fanta Uva <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Guaraná Antarctica Lata"> Guaraná Antarctica <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Schweppes Citrus Lata"> Schweppes Citrus <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Sprite Lata"> Sprite <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Guaraná Antarctica Lata"> Guaraná Antarctica Lata <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Schweppes Citrus Lata"> Schweppes Citrus Lata <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Sprite Lata"> Sprite Lata <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
       <h3>Latas sem Álcool</h3>
-      <div class="item"><input type="checkbox" data-nome="Brahma 0%"> Brahma 0 <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Heineken 0%"> Heineken 0 <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Del Valle Uva"> Lata Del Valle Uva <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Del Valle Pêssego"> Lata Del Valle Pêssego <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Brahma 0%"> Brahma 0% <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Heineken 0%"> Heineken 0% <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Del Valle Uva"> Del Valle Uva Lata<input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Del Valle Pêssego"> Del Valle Pêssego Lata<input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
@@ -217,8 +234,8 @@
 
     <div class="section">
       <h3>Batidas</h3>
-      <div class="item"><input type="checkbox" data-nome="Batida de Morango"> Morango <input type="number" min="1" value="1"></div>
-      <div class="item"><input type="checkbox" data-nome="Batida de Maracujá"> Maracujá <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batida de Morango"> Batida de Morango <input type="number" min="1" value="1"></div>
+      <div class="item"><input type="checkbox" data-nome="Batida de Maracujá"> Batida de Maracujá <input type="number" min="1" value="1"></div>
     </div>
 
     <div class="section">
