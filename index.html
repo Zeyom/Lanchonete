@@ -358,7 +358,7 @@
       if (!mesa) return alert("Informe o número da mesa!");
       if (pedidos.length === 0) return alert("Selecione ao menos 1 item.");
 
-      await fetch("http://localhost:3000/pedido", {
+      fetch("https://lanchonete-o8lx.onrender.com/pedido", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pedidos, observacoes, mesa })
@@ -377,7 +377,7 @@
     }
 
     async function carregarPedidos() {
-      const res = await fetch("http://localhost:3000/pedidos");
+      const res = await fetch("https://lanchonete-o8lx.onrender.com/pedidos");
       const dados = await res.json();
       const lista = document.getElementById("pedidos-lista");
       lista.innerHTML = "";
@@ -407,7 +407,7 @@
     }
 
     async function removerPedido(id) {
-      await fetch(`http://localhost:3000/pedido/${id}`, { method: "DELETE" });
+      await fetch(`https://lanchonete-o8lx.onrender.com/pedido/${id}`, { method: "DELETE" });
       carregarPedidos();
     }
 
